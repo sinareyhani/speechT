@@ -191,6 +191,7 @@
         $(document).ready(function() {
             const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
             recognition.lang = 'fa-IR';
+            recognition.onend = null;
             recognition.continuous = true;
             recognition.maxResults = 50;
             recognition.interimResults = false;
