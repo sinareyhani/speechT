@@ -119,6 +119,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -189,8 +190,9 @@
     <script>
         $(document).ready(function() {
             const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
-            recognition.lang = 'fa-IR'; // or 'en-US' for English
-            recognition.continuous = false;
+            recognition.lang = 'fa-IR';
+            recognition.continuous = true;
+            recognition.maxResults = 10;
             recognition.interimResults = false;
             let isListening = false;
 
@@ -214,35 +216,15 @@
 
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript.trim();
-                $('#output').text('Recognized Command:' + transcript);
-
-                // You can add your own logic here to handle the recognized text
-                // For example, you can use the transcript to make an API call
-                // $.ajax({
-                //     url: '/get-information',
-                //     type: 'POST',
-                //     contentType: 'application/json',
-                //     data: JSON.stringify({ query: transcript }),
-                //     success: function(response) {
-                //         console.log(response);
-                //     },
-                //     error: function(xhr, status, error) {
-                //         console.error(xhr.responseText);
-                //     }
-                // });
+                $('#output').text(transcript);
+               
             };
 
             recognition.onerror = function(event) {
-                console.error('Speech recognition error:', event.error);
+                // console.error('Speech recognition error:', event.error);
                 alert('Speech recognition error. Please try again or allow microphone access.');
             };
         });
     </script>
 </body>
 </html>
-
-
-
-
-
- 
