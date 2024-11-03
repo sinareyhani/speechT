@@ -192,7 +192,7 @@
             const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
             recognition.lang = 'fa-IR';
             recognition.continuous = true;
-            recognition.maxResults = 10;
+            recognition.maxResults = 50;
             recognition.interimResults = false;
             let isListening = false;
 
